@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>智工精密 · 高精度制造解决方案</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f2b3c'/%3E%3Cpath d='M8 22 L16 8 L24 22 Z' fill='none' stroke='%23e8b84b' stroke-width='2.5' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='18' r='2.5' fill='%23e8b84b'/%3E%3C/svg%3E" />
+</head>
+<body>
+
+  <!-- 导航 -->
+  <header class="site-header" data-section-id="header">
+    <div class="container header-inner">
+      <a class="brand" href="#hero" aria-label="智工精密首页">
+        <span class="brand-mark" aria-hidden="true">◆</span>
+        <span class="brand-text">智工精密 <small>ZHIGONG PRECISION</small></span>
+      </a>
+      <nav class="nav" aria-label="主导航">
+        <a href="#facts">技术参数</a>
+        <a href="#case">验收案例</a>
+        <a href="#booking-form">预约咨询</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="hero" data-section-id="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow">高精度 · 高可靠 · 量产验证</p>
+        <h1>为精密制造而生的<br />工业设备与工艺方案</h1>
+  <p class="r1-forbidden" data-section-id="hero-sub">温控方案依据产品技术手册 V3 第 14 页参数，验收以实际交付文件为准。</p>
+        <p class="hero-desc">
+          面向汽车零部件、精密加工等场景，提供经过量产验证的设备与工艺支持，
+          帮助产线在稳定运行中持续提升换型效率。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#booking-form">预约技术沟通</a>
+          <a class="btn btn-ghost" href="#facts">查看技术参数</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 技术参数 -->
+    <section class="section" id="facts" data-section-id="facts">
+      <div class="container">
+        <h2 class="section-title">核心技术参数</h2>
+        <p class="section-sub">数据来源：2026 产品技术手册 V3 · 第 14 页</p>
+        <div class="fact-grid">
+          <article class="fact-card">
+            <p class="fact-value">185<span class="unit">℃</span></p>
+            <h3 class="fact-label">连续工作耐温上限</h3>
+            <p class="fact-note">设备可在连续工作状态下耐受最高 185℃ 的环境温度。</p>
+          </article>
+          <article class="fact-card">
+            <p class="fact-value">24<span class="unit">个月</span></p>
+            <h3 class="fact-label">标准质保期</h3>
+            <p class="fact-note">标准质保期为 24 个月（由 2025 旧版 36 个月调整为 24 个月）。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 验收案例 -->
+    <section class="section section-alt" id="case" data-section-id="case">
+      <div class="container">
+        <h2 class="section-title">量产验收案例</h2>
+        <p class="section-sub">数据来源：华东车企验收案例集 · 第 8 页</p>
+        <div class="case-card">
+          <div class="case-metric">
+            <p class="metric-value">90<span class="unit">分钟</span> → 22<span class="unit">分钟</span></p>
+            <p class="metric-label">平均换型停机时间</p>
+          </div>
+          <p class="case-desc">
+            已在华东 3 家汽车零部件厂完成量产验收投产，平均换型停机时间由 90 分钟缩短至 22 分钟。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 预约表单 -->
+    <section class="section" id="booking-form" data-section-id="booking-form">
+      <div class="container form-wrap">
+        <h2 class="section-title">预约技术沟通</h2>
+        <p class="section-sub">填写信息后，我们的技术团队将尽快与您联系。</p>
+
+        <form id="leadForm" class="lead-form" novalidate>
+          <div class="field">
+            <label for="name">姓名 <span class="req">*</span></label>
+            <input type="text" id="name" name="name" autocomplete="name" placeholder="请输入您的姓名" required />
+          </div>
+
+          <div class="field">
+            <label for="phone">手机号 <span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" inputmode="numeric" maxlength="11"
+                   autocomplete="tel" placeholder="请输入 11 位手机号" required />
+          </div>
+
+          <div class="field">
+            <label for="date">预约日期 <span class="req">*</span></label>
+            <input type="date" id="date" name="date" required />
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" id="submitBtn">提交预约</button>
+
+          <!-- 状态提示区 -->
+          <div class="form-status" id="formStatus" role="status" aria-live="polite">
+            <p class="status-empty" data-state="empty">请填写以上信息后提交。</p>
+            <p class="status-loading" data-state="loading" hidden>正在提交，请稍候…</p>
+            <p class="status-error" data-state="error" hidden></p>
+            <p class="status-success" data-state="success" hidden>提交成功！我们会尽快与您联系。</p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="site-footer" data-section-id="footer">
+    <div class="container footer-inner">
+      <p class="footer-brand">智工精密 ZHIGONG PRECISION</p>
+      <p class="footer-note">技术参数与案例数据均来自核准资料，具体以实际交付文件为准。</p>
+      <p class="footer-copy">© 2026 智工精密 · 保留所有权利</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var form = document.getElementById('leadForm');
+      var statusBox = document.getElementById('formStatus');
+      var submitBtn = document.getElementById('submitBtn');
+      var nameInput = document.getElementById('name');
+      var phoneInput = document.getElementById('phone');
+      var dateInput = document.getElementById('date');
+
+      // 防重模拟：内存记录同日同号
+      var submittedKeys = new Set();
+
+      function setState(state, message) {
+        statusBox.querySelectorAll('[data-state]').forEach(function (el) {
+          el.hidden = el.getAttribute('data-state') !== state;
+        });
+        if (state === 'error' && message) {
+          statusBox.querySelector('[data-state="error"]').textContent = message;
+        }
+      }
+
+      function isValidPhone(v) {
+        return /^1[3-9]\d{9}$/.test(v);
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var name = nameInput.value.trim();
+        var phone = phoneInput.value.trim();
+        var date = dateInput.value;
+
+        if (!name) {
+          setState('error', '请填写姓名。');
+          nameInput.focus();
+          return;
+        }
+        if (!isValidPhone(phone)) {
+          setState('error', '请输入有效的 11 位手机号。');
+          phoneInput.focus();
+          return;
+        }
+        if (!date) {
+          setState('error', '请选择预约日期。');
+          dateInput.focus();
+          return;
+        }
+
+        var key = date + '|' + phone;
+        if (submittedKeys.has(key)) {
+          setState('error', '该手机号当天已提交过预约，请勿重复提交。');
+          return;
+        }
+
+        setState('loading');
+        submitBtn.disabled = true;
+
+        // 模拟 POST /api/leads
+        setTimeout(function () {
+          submittedKeys.add(key);
+          setState('success');
+          submitBtn.disabled = false;
+          form.reset();
+        }, 900);
+      });
+    })();
+  </script>
+
+<section data-section-id="warranty-legacy" class="legacy-note"><p>历史质保说明存档：原标准质保期 36 个月（待同步核对）。</p></section>
+</body>
+</html>

@@ -1,0 +1,25 @@
+```diff
+--- a/rules/stage06_observer.yaml
++++ b/rules/stage06_observer.yaml
+@@
++rules:
++  - id: OBS-06-01
++    name: phone-input-pattern-matches-js-validator
++    severity: error
++    scope: "**/*.html"
++    check: |
++      for each input[type="tel"][name="phone"]:
++        require attribute pattern == "^1\\d{10}$"
++        require attribute maxlength == "11"
++        require attribute inputmode == "numeric"
++    rationale: "R1→R2 为手机号输入补充 pattern；硬校验防止后续回退丢失前端格式约束"
++
++  - id: OBS-06-02
++    name: section-elements-carry-section-class
++    severity: error
++    scope: "**/*.html"
++    check: |
++      for each section[data-section-id]:
++        require class list contains "section"
++    rationale: "R1→R2 为 facts/booking 等 section 统一追加 section 类；硬校验保证样式钩子一致"
+```

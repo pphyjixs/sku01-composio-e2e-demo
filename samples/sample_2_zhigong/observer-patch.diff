@@ -1,0 +1,18 @@
+```diff
+--- a/gates/ad_law_forbidden.rules
++++ b/gates/ad_law_forbidden.rules
+@@
++# rule: ad_law_forbidden.absolute_claim_scan
++# scope: index.html copy (all text nodes + attribute values)
++# fail_if: regex match on rendered copy
++pattern: /(国家级(第一|领先|最优)?|100%\s*(包过|通过|合格)|包过(验收|审核)?|绝对|唯一|顶级|第一品牌)/
++action: block
++message: "广告法禁用极限词命中: {match}"
++
++# rule: ad_law_forbidden.claim_requires_source
++# scope: index.html copy
++# fail_if: sentence contains 承诺|保证|包过|100% AND lacks citation token (手册|标准|GB|ISO|第\s*\d+\s*页|以实际交付)
++pattern: /(承诺|保证|包过|100%)/  AND NOT /(手册|标准|GB\/T|ISO|第\s*\d+\s*页|以实际交付)/
++action: block
++message: "绝对化承诺缺少核准来源引用"
+```

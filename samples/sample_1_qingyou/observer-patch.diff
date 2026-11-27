@@ -1,0 +1,22 @@
+```diff
+--- a/gates/rules.yaml
++++ b/gates/rules.yaml
+@@
+ rules:
++  - id: naked_hex_business_selector
++    severity: error
++    scope: ["**/*.css", "**/*.html"]
++    check: regex
++    pattern: '(?<!:root[^{}]*\{[^{}]*)(?<![-\w])#[0-9A-Fa-f]{3,8}\b'
++    exclude_context: "inside :root { ... } blocks"
++    message: "业务选择器出现裸 HEX 色值，必须替换为 var(--token)"
++    autofix: false
++
++  - id: exposed_admin_path
++    severity: error
++    scope: ["**/*.html"]
++    check: regex
++    pattern: '(href|src|action|url)\s*=\s*["'']?[^"'']*/admin(\.html)?\b'
++    message: "公网页面暴露管理后台路径，必须移除，仅保留只写留资接口"
++    autofix: false
+```

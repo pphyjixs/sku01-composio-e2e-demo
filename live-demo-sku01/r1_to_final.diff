@@ -1,0 +1,58 @@
+--- r1/index.html
++++ final/index.html
+@@ -27,7 +27,7 @@
+       <a class="brand-mark" href="#hero" aria-label="青釉手作工坊 QINGYOU STUDIO 返回顶部">
+         <span class="brand-seal" aria-hidden="true">釉</span>
+         <span class="brand-text">
+-          <span class="brand-cn">青釉手作工坊 · QINGYOU STUDIO</span>
++          <span class="brand-cn">青釉手作工坊<span class="brand-suffix"> · QINGYOU STUDIO</span></span>
+           <span class="brand-en">Warm Dark Terracotta Ceramic Workshop</span>
+         </span>
+       </a>
+--- r1/styles.css
++++ final/styles.css
+@@ -124,6 +124,7 @@
+   align-items: center;
+   gap: 12px;
+   min-width: 0;
++  max-width: 100%;
+ }
+ 
+ .brand-seal {
+@@ -146,6 +147,8 @@
+   display: flex;
+   flex-direction: column;
+   line-height: 1.2;
++  min-width: 0;
++  max-width: 100%;
+ }
+ 
+ .brand-cn {
+@@ -154,6 +157,9 @@
+   font-weight: 600;
+   color: var(--text-primary);
+   white-space: nowrap;
++  max-width: 100%;
++  overflow: hidden;
++  text-overflow: ellipsis;
+ }
+ 
+ .brand-en {
+@@ -847,6 +853,17 @@
+     padding-right: 96px;
+   }
+ 
++  .brand-mark {
++    max-width: 100%;
++    gap: 10px;
++  }
++
++  .brand-cn {
++    font-size: 0.9375rem;
++    white-space: normal;
++  }
++
++  .brand-suffix,
+   .brand-en {
+     display: none;
+   }

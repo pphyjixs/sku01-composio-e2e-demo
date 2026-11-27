@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>青釉手作工坊 · 预约体验</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%236b8e7b'/%3E%3Cpath d='M10 20c2-6 10-6 12 0' stroke='%23f5f0e8' stroke-width='2' fill='none'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <header data-section-id="hero">
+    <div class="hero-inner">
+      <p class="brand">青釉手作工坊 · QINGYOU STUDIO</p>
+      <h1>在泥土与窑火之间，<br />遇见手作的温度</h1>
+      <p class="hero-sub">午后拉坯 · 窑变鉴赏 · 私享选品</p>
+      <a class="cta" href="#booking-form">预约体验</a>
+    </div>
+  </header>
+
+  <main>
+    <section data-section-id="facts" class="facts">
+      <h2>开放场次</h2>
+      <ul class="fact-list">
+        <li><strong>午后拉坯体验</strong><span>单场上限 8 人</span></li>
+        <li><strong>窑变器皿鉴赏</strong><span>单场上限 8 人</span></li>
+        <li><strong>私享选品</strong><span>单场上限 8 人</span></li>
+      </ul>
+      <p class="note">同一手机号同一天仅可预约一次，请合理安排。</p>
+    </section>
+
+    <section data-section-id="booking-form" class="booking">
+      <h2>预约留资</h2>
+      <form id="leadForm" novalidate>
+        <div class="field">
+          <label for="name">姓名</label>
+          <input type="text" id="name" name="name" placeholder="请输入您的姓名" required />
+        </div>
+        <div class="field">
+          <label for="phone">手机号</label>
+          <input type="tel" id="phone" name="phone" placeholder="11 位手机号" inputmode="numeric" maxlength="11" required />
+        </div>
+        <div class="field">
+          <label for="date">预约日期</label>
+          <input type="date" id="date" name="date" required />
+        </div>
+        <div class="field">
+          <label for="people">人数</label>
+          <input type="number" id="people" name="people" min="1" max="8" value="1" required />
+        </div>
+        <button type="submit" id="submitBtn">提交预约</button>
+      </form>
+      <div id="statusArea" class="status-area" role="status" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer data-section-id="footer">
+    <p>青釉手作工坊 · QINGYOU STUDIO</p>
+    <p class="small">预约成功后请按时到店，如需调整请提前联系。</p>
+  </footer>
+
+  <script>
+    (function () {
+      const form = document.getElementById('leadForm');
+      const statusArea = document.getElementById('statusArea');
+      const submitBtn = document.getElementById('submitBtn');
+      const phoneInput = document.getElementById('phone');
+
+      // 确保手机号输入框字号 >= 16px（防止移动端缩放）
+      phoneInput.style.fontSize = '16px';
+
+      const STORAGE_KEY = 'qy_leads';
+
+      function getLeads() {
+        try {
+          return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        } catch (e) {
+          return [];
+        }
+      }
+
+      function saveLeads(leads) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
+      }
+
+      function setStatus(type, message) {
+        statusArea.className = 'status-area ' + type;
+        statusArea.textContent = message;
+      }
+
+      function clearStatus() {
+        statusArea.className = 'status-area';
+        statusArea.textContent = '';
+      }
+
+      function validate(name, phone, date, people) {
+        if (!name.trim()) return '请填写姓名。';
+        if (!/^1\d{10}$/.test(phone)) return '请填写正确的 11 位手机号。';
+        if (!date) return '请选择预约日期。';
+        const p = Number(people);
+        if (!Number.isInteger(p) || p < 1 || p > 8) return '人数需为 1 至 8 人。';
+        return null;
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        clearStatus();
+
+        const name = document.getElementById('name').value.trim();
+        const phone = phoneInput.value.trim();
+        const date = document.getElementById('date').value;
+        const people = document.getElementById('people').value;
+
+        const err = validate(name, phone, date, people);
+        if (err) {
+          setStatus('error', err);
+          return;
+        }
+
+        // 前端同日同号防重模拟
+        const leads = getLeads();
+        const duplicate = leads.some(function (l) {
+          return l.phone === phone && l.date === date;
+        });
+        if (duplicate) {
+          setStatus('error', '该手机号当天已预约，请勿重复提交（409）。');
+          return;
+        }
+
+        // loading 状态
+        submitBtn.disabled = true;
+        setStatus('loading', '正在提交预约…');
+
+        // 模拟 POST /api/leads
+        setTimeout(function () {
+          try {
+            const newLead = { name: name, phone: phone, date: date, people: Number(people) };
+            leads.push(newLead);
+            saveLeads(leads);
+            setStatus('success', '预约成功！我们将尽快与您确认。');
+            form.reset();
+          } catch (e) {
+            setStatus('error', '提交失败，请稍后重试。');
+          } finally {
+            submitBtn.disabled = false;
+          }
+        }, 600);
+      });
+
+      // 初始 empty 状态
+      setStatus('empty', '请填写上方信息完成预约。');
+    })();
+  </script>
+</body>
+</html>

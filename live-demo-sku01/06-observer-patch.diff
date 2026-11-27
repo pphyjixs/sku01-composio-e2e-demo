@@ -1,0 +1,25 @@
+--- a/gates/check_gates.py
++++ b/gates/check_gates.py
+@@ -42,6 +42,7 @@ def run_static_gates() -> dict[str, Any]:
+     has_safe_area = bool(re.search(r"padding-right\s*:\s*96px", css))
+     has_inline_favicon = "image/svg+xml" in html
++    has_mobile_brand_guard = bool(re.search(r"\.brand-cn[\s\S]*?(text-overflow\s*:\s*ellipsis|white-space\s*:\s*normal)", css)) and (".brand-suffix" in css or "min-width: 0" in css)
+ 
+     hero_img = ROOT_DIR / "assets" / "hero-vessel.jpg"
+     craft_img = ROOT_DIR / "assets" / "craft-detail.jpg"
+@@ -78,6 +79,14 @@ def run_static_gates() -> dict[str, Any]:
+                 "fix_hint": "Set padding-right: 96px on .site-header in @media (max-width: 640px).",
+             }
+         )
++    if not has_mobile_brand_guard:
++        defects.append(
++            {
++                "gate": "mobile_header_capsule_guard",
++                "target": "styles.css .brand-cn / .brand-suffix",
++                "issue": "R1实屏盲审复盘规则：缺少窄屏顶栏标题截断或英文后缀折叠保护，易侵入 87x32pt 小程序胶囊区",
++                "fix_hint": "为 .brand-cn 添加 min-width:0 / overflow:hidden / text-overflow:ellipsis 并在 <=640px 折叠 .brand-suffix。",
++            }
++        )
+     if not has_inline_favicon:
+         defects.append(
+             {

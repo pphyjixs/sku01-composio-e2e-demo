@@ -1,0 +1,4 @@
+# Protected architectural & contract files for SKU 01 (QINGYOU STUDIO)
+DESIGN.md @qingyou-a01-orchestrator
+server.py @qingyou-a01-orchestrator
+gates/ @qingyou-a01-orchestrator

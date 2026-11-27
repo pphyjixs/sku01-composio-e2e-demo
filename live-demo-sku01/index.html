@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>青釉手作工坊 · QINGYOU STUDIO — 在线预约探店</title>
+  <meta
+    name="description"
+    content="青釉手作工坊（QINGYOU STUDIO）：泥土、拉坯双手与窑火 · 青釉手作陶瓷工作室，提供午后拉坯体验、窑变器皿鉴赏与私享选品在线预约。"
+  />
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='2' fill='%2312100E'/%3E%3Crect x='2' y='2' width='28' height='28' rx='2' fill='none' stroke='%23C87D55' stroke-width='1.5'/%3E%3Cpath d='M10 12c0-2.5 2.5-4 6-4s6 1.5 6 4v7c0 3.2-2.5 5-6 5s-6-1.8-6-5v-7z' fill='none' stroke='%23F3ECE2' stroke-width='1.5'/%3E%3C/svg%3E"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="mp-capsule" aria-hidden="true">
+    <span>•••</span>
+    <span class="mp-capsule-divider"></span>
+    <span>◎</span>
+  </div>
+
+  <header class="site-header" data-section-id="header">
+    <div class="header-inner">
+      <a class="brand-mark" href="#hero" aria-label="青釉手作工坊 QINGYOU STUDIO 返回顶部">
+        <span class="brand-seal" aria-hidden="true">釉</span>
+        <span class="brand-text">
+          <span class="brand-cn">青釉手作工坊<span class="brand-suffix"> · QINGYOU STUDIO</span></span>
+          <span class="brand-en">Warm Dark Terracotta Ceramic Workshop</span>
+        </span>
+      </a>
+
+      <div class="header-actions">
+        <nav class="site-nav" aria-label="主导航">
+          <a href="#story">工坊理念</a>
+          <a href="#sessions">预约场次</a>
+          <a href="#booking-form">在线预约</a>
+          <a href="#faq">答疑</a>
+        </nav>
+
+        <button
+          type="button"
+          id="miniprogramToggle"
+          class="ruler-toggle"
+          aria-pressed="false"
+        >
+          微信小程序胶囊标尺
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="hero" data-section-id="hero">
+      <div class="hero-backdrop" aria-hidden="true">
+        <img
+          src="assets/hero-vessel.jpg"
+          data-asset-key="hero"
+          alt="青釉手作工坊侧光青釉茶器摄影主图"
+          class="hero-media"
+          width="1440"
+          height="810"
+          decoding="async"
+          fetchpriority="high"
+        />
+        <div class="hero-scrim"></div>
+      </div>
+
+      <div class="container hero-content-wrap">
+        <div class="hero-copy">
+          <p class="eyebrow">QINGYOU STUDIO · 线下手作陶瓷工作室</p>
+          <h1 class="hero-title">泥土、拉坯双手与窑火</h1>
+          <p class="hero-subcopy">
+            泥土、拉坯双手与窑火 · 青釉手作陶瓷工作室。开放「午后拉坯体验」「窑变器皿鉴赏」「私享选品」3 大预约场次，支持访客在线预约探店。
+          </p>
+
+          <div class="hero-cta-row">
+            <a href="#booking-form" class="btn-primary" data-scroll-target="#booking-form">
+              预约探店体验
+            </a>
+            <a href="#sessions" class="btn-secondary" data-scroll-target="#sessions">
+              查看 3 大预约场次
+            </a>
+          </div>
+
+          <ul class="hero-tags" aria-label="工坊核准规则标签">
+            <li class="hero-tag">3 大预约场次</li>
+            <li class="hero-tag">单场限 8 人</li>
+            <li class="hero-tag">同日同号防重</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-section" id="story" data-section-id="story">
+      <div class="container story-grid">
+        <figure class="story-media-frame">
+          <img
+            src="assets/craft-detail.jpg"
+            data-asset-key="craft"
+            alt="青釉手作工坊匠人拉坯湿泥工艺实景图"
+            class="story-image"
+            width="960"
+            height="720"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption class="story-caption">
+            CRAFT DETAIL · 湿泥拉坯、修坯与入窑烧成工艺实景
+          </figcaption>
+        </figure>
+
+        <div class="story-body">
+          <p class="eyebrow">01 / STUDIO PHILOSOPHY</p>
+          <h2 class="section-title">以手掌温度塑泥，待窑火成釉色</h2>
+          <p>
+            青釉手作工坊（QINGYOU STUDIO）是一间专注泥土、拉坯双手与窑火叙事的线下手作陶瓷工作室。我们以安静有序的场次预约制接待访客，让每一次到访都能专注感受器型轮廓、湿泥肌理与窑变釉面。
+          </p>
+          <p>
+            为保障体验节奏与拉坯工位秩序，工坊所有预约场次均按固定人数上限与实名手机号防重规则运行，线下探店仅需提前提交在线预约单。
+          </p>
+
+          <div class="story-rules">
+            <div class="rule-row">
+              <span class="rule-code">QY-RULE-01 · 场次与人数上限</span>
+              <p class="rule-desc">
+                开放「午后拉坯体验」「窑变器皿鉴赏」「私享选品」3 个预约场次，单场上限 8 人。
+              </p>
+            </div>
+            <div class="rule-row">
+              <span class="rule-code">QY-RULE-02 · 预约留资与防重校验</span>
+              <p class="rule-desc">
+                预约需填写姓名、11 位手机号、预约日期与场次（含人数备注）；同一手机号同一天禁止重复预约（服务端返回 HTTP 409 提示）。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sessions-section" id="sessions" data-section-id="sessions">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">02 / CURATED SESSIONS</p>
+          <h2 class="section-title">选择你的探店预约场次</h2>
+          <p class="section-lead">
+            点击下方任意场次卡片，将自动同步选中至下方预约表单。每个场次单场上限 8 人。
+          </p>
+        </div>
+
+        <div class="sessions-grid" role="group" aria-label="开放预约场次">
+          <button
+            type="button"
+            class="session-card is-selected"
+            data-session-card="午后拉坯体验"
+            aria-pressed="true"
+          >
+            <div>
+              <div class="session-meta">
+                <span>SESSION 01</span>
+                <span class="session-cap">单场上限 8 人</span>
+              </div>
+              <h3 class="session-name">午后拉坯体验</h3>
+              <p class="session-desc">
+                面向初次接触或喜爱动手塑形的访客，在陶轮旁完成揉泥、定中心与拉坯成型的基础体验。
+              </p>
+            </div>
+            <div class="session-footer">
+              <span>点击选定此场次</span>
+              <span class="session-state-label" data-card-badge>已选定</span>
+            </div>
+          </button>
+
+          <button
+            type="button"
+            class="session-card"
+            data-session-card="窑变器皿鉴赏"
+            aria-pressed="false"
+          >
+            <div>
+              <div class="session-meta">
+                <span>SESSION 02</span>
+                <span class="session-cap">单场上限 8 人</span>
+              </div>
+              <h3 class="session-name">窑变器皿鉴赏</h3>
+              <p class="session-desc">
+                近距离品鉴工坊烧成的青釉与窑变茶器、日用器皿，了解胎土、施釉与窑位火候的呈现差异。
+              </p>
+            </div>
+            <div class="session-footer">
+              <span>点击选定此场次</span>
+              <span class="session-state-label" data-card-badge>选择场次</span>
+            </div>
+          </button>
+
+          <button
+            type="button"
+            class="session-card"
+            data-session-card="私享选品"
+            aria-pressed="false"
+          >
+            <div>
+              <div class="session-meta">
+                <span>SESSION 03</span>
+                <span class="session-cap">单场上限 8 人</span>
+              </div>
+              <h3 class="session-name">私享选品</h3>
+              <p class="session-desc">
+                为空间茶席配置或个人器皿收藏需求提供安静的到店选品时段，逐件检视器型与釉色细节。
+              </p>
+            </div>
+            <div class="session-footer">
+              <span>点击选定此场次</span>
+              <span class="session-state-label" data-card-badge>选择场次</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking-section" id="booking-form" data-section-id="booking-form">
+      <div class="container booking-layout">
+        <div>
+          <p class="eyebrow">03 / STUDIO RESERVATION</p>
+          <h2 class="section-title">在线提交探店预约</h2>
+          <p class="section-lead">
+            请填写真实联系信息与期望探店日期。提交后系统将实时核验当日同号防重规则并生成预约回执。
+          </p>
+
+          <div class="booking-aside-card">
+            <span class="rule-code">预约须知</span>
+            <ul class="booking-aside-list">
+              <li>必填项：姓名、11 位中国大陆手机号、预约日期与预约场次。</li>
+              <li>每场次单场上限 8 人，单次预约可选 1–4 位同行访客。</li>
+              <li>防重机制：同一手机号在同一天仅允许提交 1 次预约，重复提交将被拦截（HTTP 409）。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="booking-form-card">
+          <form id="leadForm" novalidate>
+            <div class="form-grid">
+              <div class="field-group">
+                <label class="field-label" for="bookingName">
+                  姓名 <span class="field-required" aria-hidden="true">*</span>
+                </label>
+                <input
+                  id="bookingName"
+                  name="name"
+                  type="text"
+                  class="field-control"
+                  placeholder="请输入您的姓名"
+                  autocomplete="name"
+                  maxlength="40"
+                  required
+                />
+              </div>
+
+              <div class="field-group">
+                <label class="field-label" for="bookingPhone">
+                  11 位手机号 <span class="field-required" aria-hidden="true">*</span>
+                </label>
+                <input
+                  id="bookingPhone"
+                  name="phone"
+                  type="tel"
+                  class="field-control"
+                  placeholder="例如 13800138000"
+                  autocomplete="tel"
+                  inputmode="numeric"
+                  pattern="^1\d{10}$"
+                  maxlength="11"
+                  required
+                />
+                <span class="field-hint">用于同日防重校验及到店核对</span>
+              </div>
+
+              <div class="field-group">
+                <label class="field-label" for="bookingDate">
+                  预约日期 <span class="field-required" aria-hidden="true">*</span>
+                </label>
+                <input
+                  id="bookingDate"
+                  name="date"
+                  type="date"
+                  class="field-control"
+                  required
+                />
+              </div>
+
+              <div class="field-group">
+                <label class="field-label" for="bookingSession">
+                  预约场次 <span class="field-required" aria-hidden="true">*</span>
+                </label>
+                <select id="bookingSession" name="session" class="field-control" required>
+                  <option value="午后拉坯体验">午后拉坯体验（单场限 8 人）</option>
+                  <option value="窑变器皿鉴赏">窑变器皿鉴赏（单场限 8 人）</option>
+                  <option value="私享选品">私享选品（单场限 8 人）</option>
+                </select>
+              </div>
+
+              <div class="field-group field-group-full">
+                <label class="field-label" for="bookingGuests">同行人数（1–4 人）</label>
+                <select id="bookingGuests" name="guests" class="field-control">
+                  <option value="1">1 位访客</option>
+                  <option value="2">2 位访客</option>
+                  <option value="3">3 位访客</option>
+                  <option value="4">4 位访客</option>
+                </select>
+              </div>
+
+              <div class="field-group field-group-full">
+                <label class="field-label" for="bookingNotes">备注说明（选填）</label>
+                <textarea
+                  id="bookingNotes"
+                  name="notes"
+                  class="field-control"
+                  placeholder="可填写期望到店时段偏好或感兴趣器型方向"
+                  maxlength="240"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <span class="field-hint">提交即写入工坊受保护预约队列，无公网列表展示</span>
+              <button type="submit" id="submitLeadBtn" class="btn-primary">
+                提交探店预约
+              </button>
+            </div>
+          </form>
+
+          <div class="form-status-region" aria-live="polite">
+            <div id="statusEmpty" class="status-panel status-empty" data-status-box="empty">
+              <span class="status-title">等待提交预约</span>
+              <span>请确认手机号与探店日期后点击「提交探店预约」，系统将自动执行同日同号防重校验。</span>
+            </div>
+
+            <div id="statusLoading" class="status-panel status-loading" data-status-box="loading" hidden>
+              <span class="status-title">正在提交预约请求…</span>
+              <span>正在校验表单信息并同步写入工坊预约存储，请稍候。</span>
+            </div>
+
+            <div id="statusSuccess" class="status-panel status-success" data-status-box="success" hidden>
+              <span class="status-title">预约提交成功（HTTP 201）</span>
+              <span id="statusSuccessText"></span>
+            </div>
+
+            <div id="statusDuplicate" class="status-panel status-duplicate" data-status-box="duplicate" hidden>
+              <span class="status-title">同日重复预约已拦截（HTTP 409）</span>
+              <span id="statusDuplicateText"></span>
+            </div>
+
+            <div id="statusError" class="status-panel status-error" data-status-box="error" hidden>
+              <span class="status-title">未能提交预约</span>
+              <span id="statusErrorText"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section" id="faq" data-section-id="faq">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">04 / FREQUENTLY ASKED</p>
+          <h2 class="section-title">探店预约常见问题</h2>
+        </div>
+
+        <div class="faq-grid">
+          <article class="faq-item">
+            <h3 class="faq-q">目前开放哪些预约场次？每场多少人？</h3>
+            <p class="faq-a">
+              工坊目前开放「午后拉坯体验」「窑变器皿鉴赏」「私享选品」3 个预约场次，所有场次均执行单场上限 8 人的名额管理。
+            </p>
+          </article>
+
+          <article class="faq-item">
+            <h3 class="faq-q">为什么同一手机号在同一天不能重复提交？</h3>
+            <p class="faq-a">
+              根据工坊预约留资规范（QY-RULE-02），同一手机号同一天禁止重复预约，以防占用宝贵工位名额。再次提交将触发服务端 HTTP 409 拦截提示。
+            </p>
+          </article>
+
+          <article class="faq-item">
+            <h3 class="faq-q">我可以在哪些端口打开此预约页面？</h3>
+            <p class="faq-a">
+              本页面已针对桌面 Web（1440px）、桌面内置浏览器（880px）、手机 H5（390px）与微信小程序胶囊安全区（右避让 96px）进行同源适配，可点击顶栏「微信小程序胶囊标尺」查看避让效果。
+            </p>
+          </article>
+
+          <article class="faq-item">
+            <h3 class="faq-q">提交后的姓名与手机号会公开显示吗？</h3>
+            <p class="faq-a">
+              不会。访客端仅开放只写预约提交入口（POST /api/leads），预约数据直接写入工坊受保护存储，公网页面不提供任何预约底表查询或管理入口。
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-section-id="footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-brand">青釉手作工坊 · QINGYOU STUDIO</div>
+        <p class="footer-note">泥土、拉坯双手与窑火 · 线下手作陶瓷工作室在线探店预约</p>
+      </div>
+
+      <nav class="footer-links" aria-label="页脚导航">
+        <a href="#hero">返回顶部</a>
+        <a href="#story">工坊理念</a>
+        <a href="#sessions">预约场次</a>
+        <a href="#booking-form">在线预约</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>云栖茶事 · 秋季品鉴会</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232f4f3a'/%3E%3Cpath d='M8 20c4-8 12-8 16 0' stroke='%23e8d9b5' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='12' r='2.5' fill='%23e8d9b5'/%3E%3C/svg%3E" />
+</head>
+<body>
+
+  <header data-section-id="hero" class="hero">
+    <div class="hero-inner">
+      <p class="brand">云栖茶事 <span>YUNQI TEA</span></p>
+      <h1 class="hero-title">秋季品鉴会 · 西溪茶室</h1>
+      <p class="hero-sub">周六 14:00–17:00 · 杭州西溪茶室</p>
+      <p class="hero-note">早鸟名额限 30 席 · 武夷正岩肉桂与老枞水仙双拼茶席</p>
+      <a class="cta" href="#booking-form">预约席位</a>
+    </div>
+  </header>
+
+  <main>
+    <section data-section-id="facts" class="facts section">
+      <h2>活动信息</h2>
+      <ul class="fact-list">
+        <li><strong>时间</strong> 周六 14:00–17:00</li>
+        <li><strong>地点</strong> 杭州西溪茶室</li>
+        <li><strong>席位</strong> 早鸟名额限 30 席</li>
+        <li><strong>茶席</strong> 武夷正岩肉桂 · 老枞水仙双拼</li>
+      </ul>
+      <p class="fact-tip">报名需填写姓名、11 位手机号及意向场次（上下半场）。同日同手机号不可重复提交。</p>
+    </section>
+
+    <section data-section-id="booking-form" class="booking section">
+      <h2>预约报名</h2>
+      <form id="leadForm" class="form" novalidate>
+        <div class="field">
+          <label for="name">姓名</label>
+          <input type="text" id="name" name="name" placeholder="请输入姓名" required autocomplete="name" />
+        </div>
+        <div class="field">
+          <label for="phone">手机号</label>
+          <input type="tel" id="phone" name="phone" placeholder="11 位手机号" inputmode="numeric" maxlength="11" pattern="^1\d{10}$" title="请输入 11 位手机号，以 1 开头" required autocomplete="tel" />
+        </div>
+        <div class="field">
+          <label for="date">预约日期</label>
+          <input type="date" id="date" name="date" required />
+        </div>
+        <div class="field">
+          <label for="session">意向场次</label>
+          <select id="session" name="session" required>
+            <option value="">请选择场次</option>
+            <option value="上半场">上半场</option>
+            <option value="下半场">下半场</option>
+          </select>
+        </div>
+        <button type="submit" id="submitBtn">提交预约</button>
+      </form>
+
+      <div id="statusArea" class="status-area" aria-live="polite">
+        <p id="statusEmpty" class="status-empty">填写信息后提交，我们将为您预留席位。</p>
+        <p id="statusLoading" class="status-loading" hidden>正在提交，请稍候…</p>
+        <p id="statusError" class="status-error" hidden></p>
+        <p id="statusSuccess" class="status-success" hidden></p>
+      </div>
+    </section>
+  </main>
+
+  <footer data-section-id="footer" class="footer">
+    <p>云栖茶事 YUNQI TEA · 杭州西溪茶室</p>
+    <p class="footer-small">活动信息以现场为准 · 席位有限，先约先得</p>
+  </footer>
+
+  <script>
+    (function () {
+      var form = document.getElementById('leadForm');
+      var btn = document.getElementById('submitBtn');
+      var dateInput = document.getElementById('date');
+      var statusEmpty = document.getElementById('statusEmpty');
+      var statusLoading = document.getElementById('statusLoading');
+      var statusError = document.getElementById('statusError');
+      var statusSuccess = document.getElementById('statusSuccess');
+      var submitted = {};
+
+      function todayStr() {
+        var d = new Date();
+        var m = String(d.getMonth() + 1).padStart(2, '0');
+        var day = String(d.getDate()).padStart(2, '0');
+        return d.getFullYear() + '-' + m + '-' + day;
+      }
+
+      dateInput.min = todayStr();
+
+      function show(el) {
+        [statusEmpty, statusLoading, statusError, statusSuccess].forEach(function (n) { n.hidden = true; });
+        if (el) el.hidden = false;
+      }
+
+      function setError(msg) {
+        statusError.textContent = msg;
+        show(statusError);
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = document.getElementById('name').value.trim();
+        var phone = document.getElementById('phone').value.trim();
+        var date = document.getElementById('date').value;
+        var session = document.getElementById('session').value;
+
+        if (!name) { setError('请填写姓名。'); return; }
+        if (!/^1\d{10}$/.test(phone)) { setError('请输入 11 位有效手机号。'); return; }
+        if (!date) { setError('请选择预约日期。'); return; }
+        if (date < todayStr()) { setError('预约日期不能早于今天。'); return; }
+        if (!session) { setError('请选择意向场次。'); return; }
+
+        var key = date + '|' + phone;
+        if (submitted[key]) {
+          setError('该手机号当天已提交过预约，请勿重复提交。');
+          return;
+        }
+
+        show(statusLoading);
+        btn.disabled = true;
+
+        // 模拟 POST /api/leads
+        setTimeout(function () {
+          btn.disabled = false;
+          submitted[key] = true;
+          statusSuccess.textContent = '预约成功！' + name + '，' + date + ' ' + session + '，席位已为您预留。';
+          show(statusSuccess);
+          form.reset();
+        }, 900);
+      });
+    })();
+  </script>
+</body>
+</html>
